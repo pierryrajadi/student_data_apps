@@ -95,13 +95,18 @@ public class FrmStudentData extends javax.swing.JFrame {
     }
 
     public void toDeleteData() {
-        DefaultTableModel tableModel = (DefaultTableModel) tblData.getModel();
-        int row = tblData.getSelectedRow();
-        if (row >= 0) {
-            tableModel.removeRow(row);
+        if (sutil.Sutil.msq(this, "Delete ?") == 0) {
+            DefaultTableModel tableModel = (DefaultTableModel) tblData.getModel();
+            int row = tblData.getSelectedRow();
+            if (row >= 0) {
+                tableModel.removeRow(row);
+            } else {
+                System.out.println("Delete Error");
+            }
         } else {
-            System.out.println("Delete Error");
+            
         }
+
     }
 
     public void toSeeInfo() {
